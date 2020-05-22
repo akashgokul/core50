@@ -19,10 +19,10 @@ from __future__ import division
 from __future__ import absolute_import
 
 # other imports
-# import sys
-# sys.path.append("...")
-# import core50_segmentation
-from ...core50_segmentation.delete_background_multimages import process_img
+import sys
+sys.path.append("...")
+import core50_segmentation
+
 
 import numpy as np
 import pickle as pkl
