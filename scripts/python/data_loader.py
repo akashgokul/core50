@@ -22,7 +22,6 @@ from __future__ import absolute_import
 import sys
 sys.path.append("...")
 import core50_segmentation
-print("HERE")
 from core50_segmentation.delete_background_multimages import process_img
 
 import numpy as np
