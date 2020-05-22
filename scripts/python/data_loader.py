@@ -32,6 +32,8 @@ import logging
 from hashlib import md5
 from PIL import Image
 
+import torch
+from torch.utils.tensorboard import SummaryWriter  
 
 class CORE50(object):
     """ CORe50 Data Loader calss
@@ -78,6 +80,7 @@ class CORE50(object):
         self.cumul = cumul
         self.run = run
         self.batch = start_batch
+        self.writer = SummaryWriter()
 
         if preload:
             print("Loading data...")
@@ -141,7 +144,6 @@ class CORE50(object):
                 print(self.paths[idx])
                 train_paths.append(os.path.join(self.root, self.paths[idx]))
                 train_relative_paths.append(self.paths[idx])
-            print(train_relative_paths)
             # loading imgs
             train_x = self.get_batch_from_paths(train_paths).astype(np.float32)
 
@@ -153,7 +155,10 @@ class CORE50(object):
         else:
             train_y = self.labels[scen][run][batch]
 
-        train_y = np.asarray(train_y, dtype=np.float32)
+        # train_y = np.asarray(train_y, dtype=np.float32)
+        train_y = process_img(train_relative_paths)
+        print(train_y.shape)
+        #self.writer.add_image('mask', train_y,dataformats='HWC')
 
         # Update state for next iter
         self.batch += 1
@@ -181,8 +186,9 @@ class CORE50(object):
             # test imgs
             test_x = self.get_batch_from_paths(test_paths).astype(np.float32)
 
-        test_y = self.labels[scen][run][-1]
-        test_y = np.asarray(test_y, dtype=np.float32)
+        # test_y = self.labels[scen][run][-1]
+        # test_y = np.asarray(test_y, dtype=np.float32)
+        test_y = process_img(test_relative_paths)
 
         return test_x, test_y
 
