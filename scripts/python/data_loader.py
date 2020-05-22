@@ -22,7 +22,7 @@ from __future__ import absolute_import
 import sys
 sys.path.append("...")
 print(sys.path)
-from core50_segmentation.delete_background_multimages import process_img
+from core50.core50_segmentation.delete_background_multimages import process_img
 
 import numpy as np
 import pickle as pkl
