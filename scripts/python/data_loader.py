@@ -20,7 +20,7 @@ from __future__ import absolute_import
 
 # other imports
 import sys
-sys.path.append('~/core50_segmentation')
+sys.path.append('/home/akash/core50_segmentation')
 print(sys.path)
 from core50_segmentation.delete_background_multimages import process_img
 
