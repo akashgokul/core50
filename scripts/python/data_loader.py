@@ -136,9 +136,12 @@ class CORE50(object):
             print("Loading data...")
             # Getting the actual paths
             train_paths = []
+            train_relative_paths = []
             for idx in train_idx_list:
                 print(self.paths[idx])
                 train_paths.append(os.path.join(self.root, self.paths[idx]))
+                train_relative_paths.append(self.paths[idx])
+            print(train_relative_paths)
             # loading imgs
             train_x = self.get_batch_from_paths(train_paths).astype(np.float32)
 
@@ -170,8 +173,10 @@ class CORE50(object):
         else:
             # test paths
             test_paths = []
+            test_relative_paths = []
             for idx in test_idx_list:
                 test_paths.append(os.path.join(self.root, self.paths[idx]))
+                test_relative_paths.append(self.paths[idx])
 
             # test imgs
             test_x = self.get_batch_from_paths(test_paths).astype(np.float32)
