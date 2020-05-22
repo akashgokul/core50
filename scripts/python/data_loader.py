@@ -22,6 +22,7 @@ from __future__ import absolute_import
 import sys
 sys.path.append('/home/akash/core50_segmentation')
 print(sys.path)
+import core50_segmentation
 from core50_segmentation.delete_background_multimages import process_img
 
 import numpy as np
