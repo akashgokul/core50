@@ -19,7 +19,7 @@ from __future__ import division
 from __future__ import absolute_import
 
 # other imports
-from ...core50_segmentation.delete_background_multimages import process_img
+from ...core50_segmentation import delete_background_multimages.process_img as process_img
 
 import numpy as np
 import pickle as pkl
